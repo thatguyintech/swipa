@@ -1,0 +1,8 @@
+{
+  "name": "swipa",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:thatguyintech/swipa.git",
+  "author": "albert <thatguyintech@gmail.com>",
+  "license": "MIT"
+}
