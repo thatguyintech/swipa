@@ -6,7 +6,7 @@ import { Card } from "./Card";
 
 // Sample memecoin data
 const memecoins = [
-  { id: 1, name: "Dogecoin", symbol: "DOGE", description: "Much wow, very crypto!", image: "/placeholder.svg?height=400&width=300" },
+  { id: 1, name: "Dogecoin", symbol: "DOGE", description: "Much wow, very crypto!", image: "https://upload.wikimedia.org/wikipedia/en/5/5f/Original_Doge_meme.jpg" },
   { id: 2, name: "Shiba Inu", symbol: "SHIB", description: "The Dogecoin killer", image: "/placeholder.svg?height=400&width=300" },
   { id: 3, name: "SafeMoon", symbol: "SAFEMOON", description: "Safely to the moon", image: "/placeholder.svg?height=400&width=300" },
   { id: 4, name: "ElonSperm", symbol: "SPERM", description: "The most potent crypto", image: "/placeholder.svg?height=400&width=300" },
