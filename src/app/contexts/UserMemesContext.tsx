@@ -12,7 +12,8 @@ interface UserMeme {
 }
 
 interface UserMemesContextType {
-  memecoins: UserMeme[];
+  userMemes: UserMeme[];
+  setUserMemes: (userMemes: UserMeme[]) => void;
 }
 
 const UserMemesContext = createContext<UserMemesContextType | undefined>(
@@ -49,10 +50,10 @@ export function UserMemesProvider({ children }: { children: ReactNode }) {
     },
   ];
 
-  const [memecoins, setMemecoins] = useState<UserMeme[]>(sampleUserMemes);
+  const [userMemes, setUserMemes] = useState<UserMeme[]>(sampleUserMemes);
 
   return (
-    <UserMemesContext.Provider value={{ memecoins }}>
+    <UserMemesContext.Provider value={{ userMemes, setUserMemes }}>
       {children}
     </UserMemesContext.Provider>
   );
