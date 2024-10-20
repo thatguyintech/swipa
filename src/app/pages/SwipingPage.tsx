@@ -16,7 +16,6 @@ import { constructAAUserOperation, doTrade } from "../alchemy/utils";
 
 export default function SwipingPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState<"left" | "right" | null>(null);
   const { swipesRemaining, decrementSwipes } = useSwipes();
   const { memecoins } = useMemecoins();
 
@@ -42,7 +41,7 @@ export default function SwipingPage() {
     },
   });
 
-  const handleSwipe = async (swipeDirection: "left" | "right") => {
+  const handleSwipe = async (direction: "left" | "right") => {
     console.log(user, signerStatus);
     if (signerStatus.isInitializing) return;
     if (!user) {
@@ -51,45 +50,54 @@ export default function SwipingPage() {
     }
 
     if (currentIndex < memecoins.length - 1 && swipesRemaining > 0) {
-      setDirection(swipeDirection);
       decrementSwipes();
       setTimeout(() => {
         setCurrentIndex((prevIndex) => prevIndex + 1);
-        setDirection(null);
       }, 300);
 
       await doTrade();
     }
+
+    // Add any additional logic for PUMP (right swipe) or DUMP (left swipe) here
+    console.log(`${direction === "right" ? "PUMP" : "DUMP"} action triggered`);
   };
 
   return (
     <div className="flex flex-col bg-black min-h-screen pt-5">
-      <div className="max-w-[300px] mx-auto">
-        <div className="relative h-[400px]">
-          {memecoins.map((memecoin, index) => (
-            <Card
-              key={memecoin.id}
-              data={memecoin}
-              isActive={index === currentIndex}
-              direction={index === currentIndex ? direction : null}
-            />
-          ))}
+      <div className="max-w-[300px] mx-auto flex flex-col">
+        <div className="w-full h-[600px] relative">
+          {memecoins
+            .map((memecoin, index) => (
+              <Card
+                key={memecoin.id}
+                data={memecoin}
+                isActive={index === currentIndex}
+                onSwipe={handleSwipe}
+              />
+            ))
+            .reverse()}
         </div>
 
-        {/* Action buttons */}
-        <div className="flex justify-center items-center mt-8 gap-4">
+        <div className="h-5"></div>
+
+        <div className="flex justify-center items-center gap-4">
           <button
             className="rounded-[100px] p-4 bg-[#C8FF00] shadow-lg flex justify-center items-center"
-            style={{ width: '147px', display: 'flex', alignItems: 'center', gap: '16px' }}
+            style={{
+              width: "147px",
+              display: "flex",
+              alignItems: "center",
+              gap: "16px",
+            }}
             onClick={() => handleSwipe("left")}
           >
             <span className="text-[#A400EA] font-['Libre_Franklin'] text-base font-extrabold leading-normal">
-              DUNK💩
+              DUMP💩
             </span>
           </button>
           <button
             className="rounded-[100px] p-4 bg-[#A400EA] shadow-lg flex justify-center items-center"
-            style={{ width: '147px' }}
+            style={{ width: "147px" }}
             onClick={() => handleSwipe("right")}
           >
             <span className="text-[#C8FF00] font-['Libre_Franklin'] text-base font-extrabold leading-normal">
