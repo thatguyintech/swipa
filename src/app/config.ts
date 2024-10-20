@@ -1,6 +1,7 @@
+import { alchemy } from "@account-kit/infra";
 import { AlchemyAccountsUIConfig, createConfig } from "@account-kit/react";
-import { sepolia, alchemy, base } from "@account-kit/infra";
 import { QueryClient } from "@tanstack/react-query";
+import { base } from "viem/chains";
 
 const uiConfig: AlchemyAccountsUIConfig = {
   illustrationStyle: "outline",
