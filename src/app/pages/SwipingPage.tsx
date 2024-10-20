@@ -5,19 +5,45 @@ import { X, Heart } from "lucide-react";
 import { Card } from "../components/Card";
 import { useSwipes } from "../contexts/SwipesContext";
 import { useMemecoins } from "../contexts/MemecoinContext";
-import { useAuthModal, useLogout, useSignerStatus, useUser } from "@account-kit/react";
+import {
+  useAuthModal,
+  useLogout,
+  useSendUserOperation,
+  useSignerStatus,
+  useSmartAccountClient,
+  useUser,
+} from "@account-kit/react";
+import { constructAAUserOperation, doTrade } from "../alchemy/utils";
 
 export default function SwipingPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState<"left" | "right" | null>(null);
   const { swipesRemaining, decrementSwipes } = useSwipes();
   const { memecoins } = useMemecoins();
+
+  // Alchemy Account Kit
   const user = useUser();
   const { openAuthModal } = useAuthModal();
   const signerStatus = useSignerStatus();
   const { logout } = useLogout();
+  const { client, address } = useSmartAccountClient({
+    type: "LightAccount",
+  });
+  const { sendUserOperationAsync } = useSendUserOperation({
+    client,
+    // optional parameter that will wait for the transaction to be mined before returning
+    waitForTxn: true,
+    onSuccess: ({ hash, request }) => {
+      // [optional] Do something with the hash and request
+      console.log("Success!", hash, request);
+    },
+    onError: (error) => {
+      // [optional] Do something with the error
+      console.log("Error!", error);
+    },
+  });
 
-  const handleSwipe = (swipeDirection: "left" | "right") => {
+  const handleSwipe = async (swipeDirection: "left" | "right") => {
     console.log(user, signerStatus);
     if (signerStatus.isInitializing) return;
     if (!user) {
@@ -32,6 +58,14 @@ export default function SwipingPage() {
         setCurrentIndex((prevIndex) => prevIndex + 1);
         setDirection(null);
       }, 300);
+
+      // await doTrade();
+
+      console.log(address);
+      const result = await sendUserOperationAsync({
+        uo: await constructAAUserOperation(),
+      });
+      console.log(result);
     }
   };
 
