@@ -59,13 +59,7 @@ export default function SwipingPage() {
         setDirection(null);
       }, 300);
 
-      // await doTrade();
-
-      console.log(address);
-      const result = await sendUserOperationAsync({
-        uo: await constructAAUserOperation(),
-      });
-      console.log(result);
+      await doTrade();
     }
   };
 

@@ -1,7 +1,6 @@
-import { alchemy } from "@account-kit/infra";
 import { AlchemyAccountsUIConfig, createConfig } from "@account-kit/react";
+import { base, alchemy } from "@account-kit/infra";
 import { QueryClient } from "@tanstack/react-query";
-import { base } from "viem/chains";
 
 const uiConfig: AlchemyAccountsUIConfig = {
   illustrationStyle: "outline",
@@ -32,7 +31,6 @@ export const config = createConfig(
     chain: base,
     ssr: true, // set to false if you're not using server-side rendering
     enablePopupOauth: true,
-    policyId: process.env.ALCHEMY_GAS_POLICY_ID!,
   },
   uiConfig,
 );

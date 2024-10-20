@@ -1,23 +1,18 @@
-import { ethers } from "ethers";
 import {
   Address,
-  concat,
   createPublicClient,
   http,
-  numberToHex,
-  SignTypedDataParameters,
-  size,
   TypedData,
   TypedDataDomain,
 } from "viem";
-import { getWalletClient, walletClient } from "./createWalletClient";
+import { getWalletClient } from "./createWalletClient";
 import { base } from "viem/chains";
 import { getSigner } from "./signer";
 
 export const publicClient = createPublicClient({
   chain: base,
   transport: http(
-    `https://base-mainnet.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_API_KEY}`,
+    `https://base-mainnet.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
   ),
 });
 
@@ -61,22 +56,6 @@ export async function doTrade() {
   try {
     // Make API call to 0x
     const quote = await getQuote();
-    const toAddress = quote.transaction.to;
-
-    // const signature = await getWalletClient().signTypedData(
-    //   quote.permit2.eip712 as SignTypedDataParameters,
-    // );
-
-    // const signatureLengthInHex = numberToHex(size(signature), {
-    //   signed: false,
-    //   size: 32,
-    // });
-
-    // const data = concat([
-    //   quote.transaction.data,
-    //   signatureLengthInHex,
-    //   signature,
-    // ]);
 
     const hash = await getWalletClient().sendTransaction({
       data: quote.transaction.data,
