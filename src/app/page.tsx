@@ -11,8 +11,8 @@ export default function Home() {
   return (
     <>
       <Nav />
-      {activeTab === 'memes' && <SwipingPage />}
-      {activeTab === 'rewards' && <PortfolioPage />}
+      {activeTab === "memes" && <SwipingPage />}
+      {activeTab === "rewards" && <PortfolioPage />}
     </>
   );
 }
