@@ -9,7 +9,7 @@ const PortfolioPage: React.FC = () => {
   return (
     <div className="flex flex-col py-10 bg-black min-h-screen">
       <div className="flex flex-col items-left justify-left text-white mx-8">
-        <h1 className="text-3xl font-bold mb-4 text-white font-['Libre_Franklin'] text-base font-medium leading-normal self-stretch">
+        <h1 className="mb-4 text-white font-['Libre_Franklin'] text-base font-medium leading-normal self-stretch">
           your points
         </h1>
         <div className="flex flex-col items-center justify-center mt-4 w-full">
