@@ -9,10 +9,14 @@ const PortfolioPage: React.FC = () => {
   return (
     <div className="flex flex-col py-10 bg-black min-h-screen">
       <div className="flex flex-col items-left justify-left text-white mx-8">
-        <h1 className="text-3xl font-bold mb-4 text-white font-['Libre_Franklin'] text-base font-medium leading-normal self-stretch">your points</h1>
+        <h1 className="text-3xl font-bold mb-4 text-white font-['Libre_Franklin'] text-base font-medium leading-normal self-stretch">
+          your points
+        </h1>
         <div className="flex flex-col items-center justify-center mt-4 w-full">
           <div className="flex flex-col items-center gap-2 w-full">
-            <p className="text-[#C8FF00] font-['Libre_Franklin'] text-[48px] font-bold leading-normal">300</p>
+            <p className="text-[#C8FF00] font-['Libre_Franklin'] text-[48px] font-bold leading-normal">
+              300
+            </p>
             <button className="flex h-[51px] px-4 justify-center items-center gap-2 w-full rounded-full bg-[#9200F0]">
               <span className="text-[#C8FF00] font-['Libre_Franklin'] text-base font-extrabold leading-normal">
                 CASH OUT🤑
@@ -21,13 +25,15 @@ const PortfolioPage: React.FC = () => {
           </div>
         </div>
       </div>
-      
       <div className="h-16"></div> {/* This adds a 64px vertical gap */}
-      
       <div className="flex flex-col items-left justify-left text-white mx-8">
         <div className="flex flex-col items-start gap-1 self-stretch mb-4">
-          <h1 className="text-white font-['Libre_Franklin'] text-base font-medium leading-normal">your memes</h1>
-          <h2 className="text-[#C6C6C6] font-['Libre_Franklin'] text-xs font-light leading-normal self-stretch">redeem 1 point for 1 swipe</h2>
+          <h1 className="text-white font-['Libre_Franklin'] text-base font-medium leading-normal">
+            your memes
+          </h1>
+          <h2 className="text-[#C6C6C6] font-['Libre_Franklin'] text-xs font-light leading-normal self-stretch">
+            redeem 1 point for 1 swipe
+          </h2>
         </div>
         <div className="flex flex-col items-start gap-2 self-stretch">
           {userMemes.map((meme) => (
