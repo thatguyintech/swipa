@@ -1,5 +1,6 @@
+/// <reference types="@account-kit/react" />
 import { createColorSet, withAccountKitUi } from "@account-kit/react/tailwind";
- 
+
 export default withAccountKitUi(
   {
     content: [
