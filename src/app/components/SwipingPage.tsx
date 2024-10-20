@@ -28,7 +28,7 @@ export default function SwipingPage() {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-gradient-to-b from-red-400 to-pink-500 items-center justify-center">
+    <div className="flex flex-col h-screen bg-black items-center justify-center">
       <div className="relative w-[300px] h-[400px]">
         {memecoins.map((memecoin, index) => (
           <Card
