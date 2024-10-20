@@ -9,6 +9,7 @@ import { NavProvider } from "./contexts/NavContext";
 import { SwipesProvider } from "./contexts/SwipesContext";
 import { MemecoinProvider } from "./contexts/MemecoinContext";
 import { UserMemesProvider } from "./contexts/UserMemesContext";
+import { UserProvider } from "./contexts/UserContext";
 
 export const Providers = (
   props: PropsWithChildren<{ initialState?: AlchemyClientState }>,
@@ -20,13 +21,15 @@ export const Providers = (
         queryClient={queryClient}
         initialState={props.initialState}
       >
-        <UserMemesProvider>
-          <MemecoinProvider>
+        <UserProvider>
+          <UserMemesProvider>
             <NavProvider>
-              <SwipesProvider>{props.children}</SwipesProvider>
+              <MemecoinProvider>
+                <SwipesProvider>{props.children}</SwipesProvider>
+              </MemecoinProvider>
             </NavProvider>
-          </MemecoinProvider>
-        </UserMemesProvider>
+          </UserMemesProvider>
+        </UserProvider>
       </AlchemyAccountProvider>
     </QueryClientProvider>
   );

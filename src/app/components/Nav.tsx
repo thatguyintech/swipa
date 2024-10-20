@@ -2,10 +2,19 @@
 
 import { useSwipes } from "../contexts/SwipesContext";
 import { useNav } from "../contexts/NavContext";
+import { useLogout, useUser } from "@account-kit/react";
+import { useUserBalance } from "../contexts/UserContext";
 
 export function Nav() {
   const { activeTab, setActiveTab } = useNav();
   const { swipesRemaining } = useSwipes();
+  const user = useUser();
+  const balance = useUserBalance();
+  const { logout } = useLogout();
+
+  const handleLogout = () => {
+    logout();
+  };
 
   return (
     <nav className="flex flex-col items-center p-4 bg-black shadow-md">
@@ -29,6 +38,18 @@ export function Nav() {
           {swipesRemaining}
         </div>
       </div>
+      {user && (
+        <div className="flex flex-row items-center justify-center gap-4">
+          <p className="top-4 left-4 text-white">Address: {user.address}</p>
+          <p className="top-4 left-4 text-white">Balance: {balance}</p>
+          <button
+            className="top-4 right-4 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
+        </div>
+      )}
     </nav>
   );
 }
