@@ -1,7 +1,6 @@
-"use client"
+"use client";
 
 import { useState } from 'react';
-import Spline from '@splinetool/react-spline/next';
 
 export function Nav() {
   const [activeTab, setActiveTab] = useState('memes');
@@ -9,12 +8,6 @@ export function Nav() {
 
   return (
     <nav className="flex flex-col items-center p-4 bg-black shadow-md">
-      <div className="w-full h-20 mb-4">
-        <Spline
-          scene="https://prod.spline.design/uUGYNr7Iox128QaR/scene.splinecode"
-        />
-      </div>
-      
       <div className="flex justify-between items-center w-full">
         <div className="flex border rounded-md">
           <button
