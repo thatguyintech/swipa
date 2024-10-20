@@ -40,10 +40,10 @@ export function Card({ data, isActive, direction }: CardProps) {
   return (
     <div className={cardClasses} style={cardStyle}>
       <img src={data.image} alt={data.name} className="w-full h-3/5 object-cover" />
-      <div className="p-4">
-        <h2 className="text-2xl font-bold mb-2">{data.name}</h2>
-        <p className="text-lg font-semibold text-gray-600 mb-2">{data.symbol}</p>
-        <p className="text-gray-700">{data.description}</p>
+      <div className="flex flex-col items-start gap-2 self-stretch p-4 rounded-b-[20px] bg-[#E7FFD8]">
+        <h2 className="text-[24px] font-['Libre_Franklin'] font-extrabold text-[#320052]">{data.name}</h2>
+        <p className="text-[16px] font-['Libre_Franklin'] font-semibold text-[#320052]">{data.symbol}</p>
+        <p className="text-[#320052] font-['Libre_Franklin'] text-[12px] font-semibold leading-normal">{data.description}</p>
       </div>
     </div>
   );
