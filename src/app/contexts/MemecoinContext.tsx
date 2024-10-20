@@ -32,31 +32,41 @@ export function MemecoinProvider({ children }: { children: ReactNode }) {
     },
     {
       id: 2,
-      name: "Shiba Inu",
-      symbol: "SHIB",
-      description: "The Dogecoin killer",
-      image: "/placeholder.svg?height=400&width=300",
+      name: "Degen",
+      symbol: "DEGEN",
+      description:
+        "DEGEN is a reward token for Farcaster users, born from meme culture. ",
+      image: "https://assets.deform.cc/degen-logo.png",
     },
     {
       id: 3,
-      name: "SafeMoon",
-      symbol: "SAFEMOON",
-      description: "Safely to the moon",
-      image: "/placeholder.svg?height=400&width=300",
+      name: "ScaredHamster",
+      symbol: "HAM",
+      description: "AHHHHHHHH",
+      image: "https://assets.deform.cc/scared-hamster.jpeg",
     },
     {
       id: 4,
-      name: "ElonSperm",
-      symbol: "SPERM",
-      description: "The most potent crypto",
-      image: "/placeholder.svg?height=400&width=300",
+      name: "Dogecoin",
+      symbol: "DOGE",
+      description: "Much wow, very crypto!",
+      image:
+        "https://upload.wikimedia.org/wikipedia/en/5/5f/Original_Doge_meme.jpg",
     },
     {
       id: 5,
-      name: "Garlicoin",
-      symbol: "GRLC",
-      description: "Hot, buttery cryptocurrency",
-      image: "/placeholder.svg?height=400&width=300",
+      name: "Degen",
+      symbol: "DEGEN",
+      description:
+        "DEGEN is a reward token for Farcaster users, born from meme culture. ",
+      image: "https://assets.deform.cc/degen-logo.png",
+    },
+    {
+      id: 6,
+      name: "ScaredHamster",
+      symbol: "HAM",
+      description: "AHHHHHHHH",
+      image: "https://assets.deform.cc/scared-hamster.jpeg",
     },
   ];
 
