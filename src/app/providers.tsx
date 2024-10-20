@@ -7,9 +7,10 @@ import { PropsWithChildren } from "react";
 import { config, queryClient } from "./config";
 import { NavProvider } from "./contexts/NavContext";
 import { SwipesProvider } from "./contexts/SwipesContext";
- 
+import { MemecoinProvider } from "./contexts/MemecoinContext";
+
 export const Providers = (
-  props: PropsWithChildren<{ initialState?: AlchemyClientState }>
+  props: PropsWithChildren<{ initialState?: AlchemyClientState }>,
 ) => {
   return (
     <QueryClientProvider client={queryClient}>
@@ -18,9 +19,11 @@ export const Providers = (
         queryClient={queryClient}
         initialState={props.initialState}
       >
-        <NavProvider>
-          <SwipesProvider>{props.children}</SwipesProvider>
-        </NavProvider>
+          <MemecoinProvider>
+            <NavProvider>
+              <SwipesProvider>{props.children}</SwipesProvider>
+            </NavProvider>
+          </MemecoinProvider>
       </AlchemyAccountProvider>
     </QueryClientProvider>
   );
