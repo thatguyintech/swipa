@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { headers } from "next/headers";
 import "./globals.css";
+import "./fonts.css"; // Add this line to import the new CSS file
 import { Providers } from "./providers";
 import { config } from "./config";
 

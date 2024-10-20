@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { X, Heart } from "lucide-react";
 import { Card } from "../components/Card";
 import { useSwipes } from "../contexts/SwipesContext";
 import { useMemecoins } from "../contexts/MemecoinContext";
@@ -77,18 +76,24 @@ export default function SwipingPage() {
       </div>
 
       {/* Action buttons */}
-      <div className="flex justify-center items-center mt-8 gap-16">
+      <div className="flex justify-center items-center mt-8 gap-4">
         <button
-          className="rounded-full p-4 bg-white shadow-lg"
+          className="rounded-[100px] p-4 bg-[#C8FF00] shadow-lg flex justify-center items-center"
+          style={{ width: '147px', display: 'flex', alignItems: 'center', gap: '16px' }}
           onClick={() => handleSwipe("left")}
         >
-          <X className="text-red-500" size={32} />
+          <span className="text-[#A400EA] font-['Libre_Franklin'] text-base font-extrabold leading-normal">
+            DUNK💩
+          </span>
         </button>
         <button
-          className="rounded-full p-4 bg-white shadow-lg"
+          className="rounded-[100px] p-4 bg-[#A400EA] shadow-lg flex justify-center items-center"
+          style={{ width: '147px' }}
           onClick={() => handleSwipe("right")}
         >
-          <Heart className="text-green-500" size={32} />
+          <span className="text-[#C8FF00] font-['Libre_Franklin'] text-base font-extrabold leading-normal">
+            PUMP🚀
+          </span>
         </button>
       </div>
     </div>
