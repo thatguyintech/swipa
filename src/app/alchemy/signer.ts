@@ -1,5 +1,9 @@
 import { AlchemyWebSigner } from "@account-kit/signer";
 
+declare global {
+  var globalSigner: AlchemyWebSigner | undefined;
+}
+
 export function getSigner(): AlchemyWebSigner {
   if (global.globalSigner) {
     console.log("returning existing signer");
@@ -17,6 +21,8 @@ export function getSigner(): AlchemyWebSigner {
       },
     },
   });
+
+  console.log("returning new signer", global.globalSigner);
 
   return global.globalSigner;
 }

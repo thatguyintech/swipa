@@ -56,6 +56,7 @@ export async function doTrade() {
   try {
     // Make API call to 0x
     const quote = await getQuote();
+    console.log("quote", quote);
 
     const hash = await getWalletClient().sendTransaction({
       data: quote.transaction.data,

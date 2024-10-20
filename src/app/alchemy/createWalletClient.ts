@@ -1,6 +1,10 @@
 import { getSigner } from "./signer";
 import { createWalletClient, http, WalletClient } from "viem";
-import { base, sepolia } from "viem/chains";
+import { base } from "viem/chains";
+
+declare global {
+  var globalWalletClient: WalletClient | undefined;
+}
 
 export function getWalletClient(): WalletClient {
   if (global.globalWalletClient) {
