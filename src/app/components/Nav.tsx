@@ -37,6 +37,7 @@ export function Nav() {
         <div className="text-lg font-semibold text-white">
           {swipesRemaining}
         </div>
+
       </div>
       {user && (
         <div className="flex flex-row items-center justify-center gap-4">
