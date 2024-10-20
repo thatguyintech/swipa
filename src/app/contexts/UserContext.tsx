@@ -11,13 +11,15 @@ import { config as wagmiConfig } from "../wagmiConfig";
 import { formatEther } from "viem";
 
 interface UserContextType {
-  balance: string;
+  userBalance: BigInt;
+  userBalanceString: string;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
-  const [userBalance, setUserBalance] = useState<string>("0");
+  const [userBalance, setUserBalance] = useState<bigint>(BigInt(0));
+  const [userBalanceString, setUserBalanceString] = useState<string>("0");
   const user = useUser();
 
   useEffect(() => {
@@ -27,7 +29,8 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         const wagmiBalance = await getBalance(wagmiConfig, {
           address: user.address,
         });
-        setUserBalance(formatEther(wagmiBalance.value) + " ETH");
+        setUserBalance(wagmiBalance.value);
+        setUserBalanceString(formatEther(wagmiBalance.value) + " ETH");
       } catch (error) {
         console.error("Error fetching user balance:", error);
       }
@@ -37,7 +40,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   }, [user?.address]);
 
   return (
-    <UserContext.Provider value={{ balance: userBalance }}>
+    <UserContext.Provider value={{ userBalance, userBalanceString }}>
       {children}
     </UserContext.Provider>
   );
@@ -48,5 +51,13 @@ export const useUserBalance = () => {
   if (context === undefined) {
     throw new Error("useUserBalance must be used within a UserProvider");
   }
-  return context.balance;
+  return context.userBalance;
+};
+
+export const useUserBalanceString = () => {
+  const context = useContext(UserContext);
+  if (context === undefined) {
+    throw new Error("useUserBalanceString must be used within a UserProvider");
+  }
+  return context.userBalanceString;
 };
