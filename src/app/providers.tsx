@@ -5,6 +5,8 @@ import { AlchemyAccountProvider } from "@account-kit/react";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { PropsWithChildren } from "react";
 import { config, queryClient } from "./config";
+import { NavProvider } from "./contexts/NavContext";
+import { SwipesProvider } from "./contexts/SwipesContext";
  
 export const Providers = (
   props: PropsWithChildren<{ initialState?: AlchemyClientState }>
@@ -16,7 +18,9 @@ export const Providers = (
         queryClient={queryClient}
         initialState={props.initialState}
       >
-        {props.children}
+        <NavProvider>
+          <SwipesProvider>{props.children}</SwipesProvider>
+        </NavProvider>
       </AlchemyAccountProvider>
     </QueryClientProvider>
   );

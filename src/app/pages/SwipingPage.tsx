@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { X, Heart } from "lucide-react";
-import { Card } from "./Card";
+import { Card } from "../components/Card";
+import { useSwipes } from "../contexts/SwipesContext";
 
 // Sample memecoin data
 const memecoins = [
@@ -16,14 +17,16 @@ const memecoins = [
 export default function SwipingPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState<'left' | 'right' | null>(null);
+  const { swipesRemaining, decrementSwipes } = useSwipes();
 
   const handleSwipe = (swipeDirection: 'left' | 'right') => {
-    if (currentIndex < memecoins.length - 1) {
+    if (currentIndex < memecoins.length - 1 && swipesRemaining > 0) {
       setDirection(swipeDirection);
+      decrementSwipes();
       setTimeout(() => {
         setCurrentIndex(prevIndex => prevIndex + 1);
         setDirection(null);
-      }, 300); // Adjust timing as needed
+      }, 300);
     }
   }
 

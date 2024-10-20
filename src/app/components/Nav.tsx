@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from 'react';
+import { useSwipes } from '../contexts/SwipesContext';
+import { useNav } from '../contexts/NavContext';
 
 export function Nav() {
-  const [activeTab, setActiveTab] = useState('memes');
-  const [swipesLeft, setSwipesLeft] = useState(10);
+  const { activeTab, setActiveTab } = useNav();
+  const { swipesRemaining } = useSwipes();
 
   return (
     <nav className="flex flex-col items-center p-4 bg-black shadow-md">
@@ -25,11 +26,9 @@ export function Nav() {
         </div>
         
         <div className="text-lg font-semibold text-white">
-          Swipes left: {swipesLeft}
+          Swipes left: {swipesRemaining}
         </div>
       </div>
     </nav>
   );
 }
-
-
