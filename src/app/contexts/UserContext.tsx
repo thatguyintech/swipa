@@ -11,7 +11,7 @@ import { config as wagmiConfig } from "../wagmiConfig";
 import { formatEther } from "viem";
 
 interface UserContextType {
-  userBalance: BigInt;
+  userBalance: bigint;
   userBalanceString: string;
 }
 
