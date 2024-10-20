@@ -1,4 +1,6 @@
-import { useState, useEffect } from 'react';
+"use client";
+
+import { useState, useEffect } from "react";
 
 interface CardProps {
   data: {
@@ -8,7 +10,7 @@ interface CardProps {
     image: string;
   };
   isActive: boolean;
-  direction: 'left' | 'right' | null;
+  direction: "left" | "right" | null;
 }
 
 export function Card({ data, isActive, direction }: CardProps) {
@@ -16,7 +18,8 @@ export function Card({ data, isActive, direction }: CardProps) {
 
   useEffect(() => {
     if (isActive && direction) {
-      const newX = direction === 'left' ? -window.innerWidth : window.innerWidth;
+      const newX =
+        direction === "left" ? -window.innerWidth : window.innerWidth;
       setPosition({ x: newX, y: 0 });
     } else if (isActive) {
       setPosition({ x: 0, y: 0 });
@@ -28,7 +31,7 @@ export function Card({ data, isActive, direction }: CardProps) {
   const cardClasses = `
     absolute w-full h-full bg-white rounded-xl shadow-lg overflow-hidden
     transform transition-transform duration-300 ease-in-out will-change-transform
-    ${isActive ? 'block' : 'hidden'}
+    ${isActive ? "block" : "hidden"}
   `;
 
   const cardStyle = {
@@ -37,10 +40,16 @@ export function Card({ data, isActive, direction }: CardProps) {
 
   return (
     <div className={cardClasses} style={cardStyle}>
-      <img src={data.image} alt={data.name} className="w-full h-3/5 object-cover" />
+      <img
+        src={data.image}
+        alt={data.name}
+        className="w-full h-3/5 object-cover"
+      />
       <div className="p-4">
         <h2 className="text-2xl font-bold mb-2">{data.name}</h2>
-        <p className="text-lg font-semibold text-gray-600 mb-2">{data.symbol}</p>
+        <p className="text-lg font-semibold text-gray-600 mb-2">
+          {data.symbol}
+        </p>
         <p className="text-gray-700">{data.description}</p>
       </div>
     </div>

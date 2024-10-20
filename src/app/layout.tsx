@@ -4,17 +4,16 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { headers } from "next/headers";
 import "./globals.css";
-import { Nav } from "./components/Nav";
 
 import { Providers } from "./providers";
- 
+
 const inter = Inter({ subsets: ["latin"] });
- 
+
 export const metadata: Metadata = {
   title: "Swipe-a-Meme!",
   description: "If it's funny, swipe right!",
 };
- 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -23,13 +22,12 @@ export default function RootLayout({
   // This will allow us to persist state across page boundaries (read more here: https://accountkit.alchemy.com/react/ssr#persisting-the-account-state)
   const initialState = cookieToInitialState(
     config,
-    headers().get("cookie") ?? undefined
+    headers().get("cookie") ?? undefined,
   );
- 
+
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Nav />
         <Providers initialState={initialState}>{children}</Providers>
       </body>
     </html>
